@@ -1,0 +1,47 @@
+
+// Define which value is paper and ink
+#if defined (EPD2IN7B_H)
+  #define COLORED     1 // EPD2IN7B is opposite to others
+  #define UNCOLORED   0
+#else
+  #define COLORED     0
+  #define UNCOLORED   1
+#endif
+
+// Define the width and height of the different displays
+#if defined (EPD1IN54_H)
+  #define EPD_WIDTH       200
+  #define EPD_HEIGHT      200
+
+#elif defined (EPD1IN54B_H)
+  #define EPD_WIDTH       200
+  #define EPD_HEIGHT      200
+
+#elif defined (EPD1IN54C_H)
+  #define EPD_WIDTH       152
+  #define EPD_HEIGHT      152
+
+#elif defined (EPD2IN7_H) || defined (EPD2IN7B_H)
+  #define EPD_WIDTH       176
+  #define EPD_HEIGHT      264
+
+#elif defined (EPD2IN9_H) || #if defined (EPD2IN9B_H)
+  #define EPD_WIDTH       128
+  #define EPD_HEIGHT      296
+
+#elif defined (EPD2IN13_H)
+  #define EPD_WIDTH       122
+  #define EPD_HEIGHT      250
+
+#elif defined (EPD2IN13B_H)
+  #define EPD_WIDTH       104
+  #define EPD_HEIGHT      212
+
+#elif defined (EPD4IN2_H)
+  #define EPD_WIDTH       400
+  #define EPD_HEIGHT      300
+
+#elif defined (EPD7IN5_H) || defined (EPD7IN5B_H)
+  #define EPD_WIDTH       640
+  #define EPD_HEIGHT      384
+#endif
