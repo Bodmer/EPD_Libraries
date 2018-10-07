@@ -28,7 +28,7 @@
 #ifndef EPDIF_H
 #define EPDIF_H
 
-#include <arduino.h>
+#include <Arduino.h>
 
 // Pin definition for ESP8266 (e.g. NodeMCU)
 // Connect display CLK signal to GPIO 14 (Node MCU pin D5)
