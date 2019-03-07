@@ -97,11 +97,38 @@ void Epd::SendData(unsigned char data) {
 
 /**
  *  @brief: Wait until the busy_pin goes HIGH
+ 
+    Update by Bodmer to share busy and DC pin.
  */
+ /*
 void Epd::WaitUntilIdle(void) {
+    // Read the busy state
     while(DigitalRead(busy_pin) == 0) {      //0: busy, 1: idle
         DelayMs(100);
-    }      
+    }
+}
+//*/
+
+void Epd::WaitUntilIdle(void) {
+  if ( busy_pin == dc_pin )
+  {
+    // Set output low in case there is a small RC delay
+    DigitalWrite(busy_pin, LOW);
+    // Make it an input
+    pinMode(busy_pin, INPUT);
+  }
+
+  if ( busy_pin < 255 )
+  {
+    // Read the busy state
+    while(DigitalRead(busy_pin) == 0) {      //0: busy, 1: idle
+        DelayMs(20);
+    }
+  }
+  else delay(100);
+
+  // Switch DC pin back to output
+  if ( busy_pin == dc_pin ) pinMode(busy_pin, OUTPUT);
 }
 
 /**
@@ -161,6 +188,8 @@ void Epd::SetLutRed(void) {
 
 void Epd::DisplayFrame(const unsigned char* frame_buffer_black, const unsigned char* frame_buffer_red) {
     unsigned char temp;
+    static uint32_t last_update;
+    
     if (frame_buffer_black != NULL) {
         SendCommand(DATA_START_TRANSMISSION_1);
         DelayMs(2);

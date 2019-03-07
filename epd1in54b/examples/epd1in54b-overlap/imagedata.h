@@ -1,10 +1,8 @@
 /**
- *  @filename   :   epdif.cpp
- *  @brief      :   Implements EPD interface functions
- *                  Users have to implement all the functions in epdif.cpp
- *  @author     :   Yehui from Waveshare
+ *  @filename   :   imagedata.h
+ *  @brief      :   head file for imagedata.cpp
  *
- *  Copyright (C) Waveshare     August 10 2017
+ *  Copyright (C) Waveshare     August 7 2017
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documnetation files (the "Software"), to deal
@@ -25,41 +23,9 @@
  * THE SOFTWARE.
  */
 
-#include "epdif.h"
-#include <SPI.h>
+extern const unsigned char IMAGE_BLACK[];
+extern const unsigned char IMAGE_RED[];
 
-EpdIf::EpdIf() {
-};
+/* FILE END */
 
-EpdIf::~EpdIf() {
-};
-
-void EpdIf::DigitalWrite(int pin, int value) {
-    digitalWrite(pin, value);
-}
-
-int EpdIf::DigitalRead(int pin) {
-    return digitalRead(pin);
-}
-
-void EpdIf::DelayMs(unsigned int delaytime) {
-    delay(delaytime);
-}
-
-void EpdIf::SpiTransfer(unsigned char data) {
-    digitalWrite(CS_PIN, LOW);
-    SPI.transfer(data);
-    digitalWrite(CS_PIN, HIGH);
-}
-
-int EpdIf::IfInit(void) {
-    pinMode(CS_PIN, OUTPUT);
-    pinMode(RST_PIN, OUTPUT);
-    ////pinMode(DC_PIN, OUTPUT);
-    pinMode(BUSY_PIN, INPUT);    // Change order so DC is output
-    pinMode(DC_PIN, OUTPUT);
-    SPI.beginTransaction(SPISettings(2000000, MSBFIRST, SPI_MODE0));
-    SPI.begin();
-    return 0;
-}
 

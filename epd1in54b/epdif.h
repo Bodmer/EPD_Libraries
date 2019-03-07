@@ -42,6 +42,22 @@
 #define DC_PIN          0 // D3
 #define CS_PIN          2 // D4
 
+// ESP32 pin definition example
+//#define RST_PIN          4
+//#define DC_PIN           2
+//#define CS_PIN          15
+//#define BUSY_PIN        21
+
+// ESP8266 Overlap mode pin definition
+// Do not use GPIO0 or GPIO2 for Busy line, they set the boot mode!
+
+//#define RST_PIN         -1 // Connect EPD RST pin to ESP6266 RST
+//#define DC_PIN           2 // NodeMCU pin D4
+//#define CS_PIN          -1 // Defined in sketch in overlap mode as D3 (GPIO 0)
+//#define BUSY_PIN         4 // Shared with DC, add 2K2 series resistor
+//#define BUSY_PIN       255 // No busy pin connected, use delays in sketch
+
+
 
 class EpdIf {
 public:
