@@ -140,7 +140,7 @@ void Paint::DrawPixel(int x, int y, int colored) {
 }
 
 /**
- *  @brief: this draws a charactor on the frame buffer but not refresh
+ *  @brief: this draws a character on the frame buffer but not refresh
  */
 void Paint::DrawCharAt(int x, int y, char ascii_char, sFONT* font, int colored) {
     int i, j;
